@@ -9,4 +9,6 @@
 [Ss]hare
 pyvenv.cfg
 .venv
+*.mp4
+*.mov
 pip-selfcheck.json
