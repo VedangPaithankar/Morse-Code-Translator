@@ -5,7 +5,7 @@ from cvzone.FaceMeshModule import FaceMeshDetector
 from cvzone.PlotModule import LivePlot
 
 # open a connection to the webcam (0 is the default camera)
-cap = cv2.VideoCapture('test_morse_code.mp4')
+cap = cv2.VideoCapture('hello_morse_code.mp4') # testing file -> 'test_morse_code.mp4', replace 0 if webcam not working
 
 # using FaceMesh detector
 detector = FaceMeshDetector(maxFaces=1)
@@ -17,7 +17,6 @@ idList = [22, 23, 24, 26, 110, 130, 157, 158, 159, 160, 161, 243]
 graph = LivePlot(1920//3, 1080//3, [280, 400])
 ratioList = []  # store eye opening ratios
 
-blinkCounter = 0
 counter = 0
 blinkStart = 0  # store the start time of a blink
 blinks = []  # list to store blink types ("Long" or "Short")
@@ -63,9 +62,6 @@ while True:
         cv2.line(frame, up, down, (255, 0, 0), 2)
         cv2.line(frame, left, right, (255, 0, 0), 2)
 
-        # display blink count on the frame
-        cvzone.putTextRect(frame, f"Blinks: {blinkCounter}", (25, 50))
-
         # calculate eye opening ratio
         ratio = (width / height) * 100
         ratioList.append(ratio)
@@ -87,7 +83,7 @@ while True:
         stack = cvzone.stackImages([frame, ratioPlot], 2, 1)
 
         # detect blink when the average ratio is high (eyes closed)
-        if ratioAvg > 320:  
+        if ratioAvg > 240:  
             if blinkStart == 0:  # start the timer for the blink
                 blinkStart = time.time()
             counter = 1  # set the counter flag
@@ -97,9 +93,9 @@ while True:
                 blinkStart = 0  # reset the timer
 
                 # classify the blink as "Long" or "Short"
-                if blinkDuration >= 1.3:
+                if 0.7 <= blinkDuration:
                     blinks.append("Long")
-                elif blinkDuration >= 0.5:
+                elif blinkDuration < 0.7:
                     blinks.append("Short")
 
                 # print the list of blinks
