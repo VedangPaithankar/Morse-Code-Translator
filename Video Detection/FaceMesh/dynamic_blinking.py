@@ -68,7 +68,7 @@ while True:
     frame = cv2.resize(frame, (1280, 720))
 
     # detect the face mesh and get the landmarks
-    frame, landmarks = detector.findFaceMesh(frame, draw=False)
+    frame, landmarks = detector.findFaceMesh(frame, draw=False) #draw=False
 
     if landmarks:
         # get the first face's landmarks
@@ -111,7 +111,7 @@ while True:
                 cv2.putText(frame, "calibrating open eye ratio...", (30, 60), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 255), 2)
             elif len(blink_ratios) < calibration_frames:
                 # collect blink ratios (larger than normal open-eye ratio)
-                if ratioAvg > max(open_eye_ratios) * 1.15:
+                if ratioAvg > max(open_eye_ratios) * 1.10:
                     blink_ratios.append(ratioAvg)
                 cv2.putText(frame, "calibrating blink ratio...", (30, 60), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 255), 2)
             else:
@@ -138,7 +138,7 @@ while True:
 
                     current_time = time.time()
                     # if enough time has passed since the last blink, consider it a new letter
-                    if current_time - lastBlinkTime >= 1.26 and lastBlinkTime != 0:
+                    if current_time - lastBlinkTime >= 1.75 and lastBlinkTime != 0:
                         blinks.append("|")  # append a separator for the end of a letter
 
                         # convert morse sequence to a letter and add to the word
@@ -151,9 +151,9 @@ while True:
                     lastBlinkTime = current_time
 
                     # classify blink as long or short based on its duration
-                    if 0.6 <= blinkDuration:
+                    if 0.7 <= blinkDuration:
                         morse_sequence += "-"  # long blink
-                    elif blinkDuration < 0.6:
+                    elif blinkDuration < 0.7:
                         morse_sequence += "."  # short blink
 
                 counter = 0
