@@ -5,7 +5,7 @@ from cvzone.FaceMeshModule import FaceMeshDetector
 from cvzone.PlotModule import LivePlot
 
 # open a connection to the webcam (0 is the default camera)
-cap = cv2.VideoCapture('hello_morse_code.mp4') # testing file -> 'test_morse_code.mp4', replace 0 if webcam not working
+cap = cv2.VideoCapture('hello_morse_code_freezeframe.mov') # testing file -> 'test_morse_code.mp4', replace 0 if webcam not working
 
 # using FaceMesh detector
 detector = FaceMeshDetector(maxFaces=1)

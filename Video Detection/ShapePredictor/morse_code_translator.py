@@ -115,8 +115,21 @@ def loop_camera(vs, detector, predictor, lStart, lEnd, rStart, rEnd):
 
     while True:
         frame = vs.read()
+
+        # Check if the frame is valid
+        if frame is None:
+            print("[ERROR] No frame captured from the video stream.")
+            break
+
         frame = imutils.resize(frame, width=450)
+        
+        # Ensure the frame is 8-bit grayscale before passing it to the detector
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+        # Confirm the data type is correct
+        if gray.dtype != np.uint8:
+            gray = gray.astype(np.uint8)
+
         rects = detector(gray, 0)
 
         for rect in rects:

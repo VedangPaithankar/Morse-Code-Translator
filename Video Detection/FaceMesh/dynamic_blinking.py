@@ -174,10 +174,10 @@ while True:
     if cv2.waitKey(25) & 0xFF == ord('q'):
         break
 
-# if there is an unfinished morse sequence, convert it to a letter and append to the word
-if morse_sequence:
-    letter = morse_to_english(morse_sequence)
-    morse_word += letter
+# # if there is an unfinished morse sequence, convert it to a letter and append to the word
+# if morse_sequence:
+#     letter = morse_to_english(morse_sequence)
+#     morse_word += letter
 print(morse_word)
 
 # release the video capture and close any open windows
