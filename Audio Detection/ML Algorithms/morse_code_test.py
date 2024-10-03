@@ -27,7 +27,7 @@ CODE = {'A': '.-',     'B': '-...',   'C': '-.-.',
 ONE_UNIT = 200  # Unit time for a dot in milliseconds
 THREE_UNITS = 3 * ONE_UNIT  # Time for a dash
 SILENCE_UNIT = ONE_UNIT  # Silence between dots and dashes within a letter
-LETTER_GAP = THREE_UNITS  # Gap between letters
+LETTER_GAP = THREE_UNITS*2  # Gap between letters
 WORD_GAP = 7 * ONE_UNIT  # Gap between words
 
 # File path to save the generated Morse code audio files
