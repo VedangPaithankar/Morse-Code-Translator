@@ -26,6 +26,16 @@ def caesar_cipher(text: str, shift: int) -> str:
     
     return ''.join(encrypted_text)
 
+def caesar_decipher(text: str, shift: int) -> str:
+    """Decrypt text encrypted with Caesar Cipher using the given shift."""
+    decrypted_text = []
+    
+    for letter in text:
+        new_pos = (ord(letter) - ord('A') - shift) % 26
+        decrypted_text.append(chr(new_pos + ord('A')))
+    
+    return ''.join(decrypted_text)
+
 def string_to_morse(input_string: str) -> str:
     """Convert a string to Morse code."""
     morse_code_dict = {

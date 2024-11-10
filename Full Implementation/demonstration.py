@@ -2,9 +2,12 @@
 import os
 import numpy as np
 import pygame
-from generate_public_keys import compute_public_key, map_digits_to_letters, caesar_cipher, string_to_morse
+from decode_video import process_morse_video
+from generate_public_keys import compute_public_key, map_digits_to_letters, caesar_cipher, string_to_morse, caesar_decipher
 from morse_code_audio_generator import generate_alternating_morse_audio, save_audio_to_wav
 from checksum_generator import get_checksum
+
+
 # Define paths and constants
 OUTPUT_PATH = './morse_code_output/'
 os.makedirs(OUTPUT_PATH, exist_ok=True)
@@ -63,9 +66,22 @@ print(f"Video Morse Code (Odd positions + CheckSum): {video_morse}")
 print(f"Audio Morse Code (Even positions): {audio_morse}")
 
 # Step 7: Decode them using morse code translator
+video_decoded_word = process_morse_video('./morse_code_train_data/hello_morse_code.mp4')
+print(video_decoded_word)
 
-# Step 8: Verify the checksum
+# Step 8: Decode them using morse code translator
+video_decoded_word = process_morse_video('./morse_code_train_data/hello_morse_code.mp4')
+print(video_decoded_word)
 
-# Step 9: decrypt them using ceasar cypher
+# Step 9: Verify the checksum
+if checksum == video_decoded_word[-1]:
+    print("Checksum verified!")
+else:
+    print("Checksum failed to verify! Audio tampered. Retransmission required!")
 
-# Step 10: keys exhchanged successfully
+# Step 10: Adding Both Audio and Video Together
+
+# Step 11: decrypt them using ceasar cypher
+public_Key = caesar_decipher(text=video_decoded_word[:-1], shift=a)
+print(public_Key)
+print("Keys exchanged successfully!")
