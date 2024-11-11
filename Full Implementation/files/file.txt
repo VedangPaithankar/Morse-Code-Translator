@@ -1,3 +1,0 @@
-primitive_root=23
-prime_number=1087
-private_key=6

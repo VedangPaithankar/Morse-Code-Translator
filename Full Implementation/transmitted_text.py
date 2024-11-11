@@ -9,7 +9,7 @@ OUTPUT_PATH = './audio_files/'
 os.makedirs(OUTPUT_PATH, exist_ok=True)
 
 # Step 1: Read inputs from file with specific format
-input_file = os.path.join(FILES_PATH, 'file.txt')
+input_file = os.path.join(FILES_PATH, 'test1.txt')
 with open(input_file, 'r') as f:
     lines = f.readlines()
     a = int(lines[0].strip().split('=')[1])        # Primitive root (a)
@@ -23,13 +23,13 @@ public_key = compute_public_key(a, q, private_key)
 encoded_public_key = map_digits_to_letters(public_key)
 
 # Caesar Cipher encryption
-shift = a % 26
+shift = 3
 encrypted_public_key = caesar_cipher(encoded_public_key, shift)
 
 # Convert to Morse code
 morse_string = ttm(encrypted_public_key)
 
-def split_morse_code(morse_code: str) -> (str, str):
+def split_morse_code(morse_code: str):
     """Split Morse code into separate strings for video (odd positions) and audio (even positions)."""
     morse_chars = morse_code.split()
     video_morse = ' '.join(morse_chars[i] for i in range(0, len(morse_chars), 2))  # Odd positions (for video)

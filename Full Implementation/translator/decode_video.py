@@ -107,13 +107,12 @@ def process_morse_video(video_path):
                 if ratioAvg > calibrated_threshold:
                     if blinkStart == 0:
                         blinkStart = time.time()
-                    counter = 1
                 else:
                     if blinkStart != 0:
                         blinkDuration = time.time() - blinkStart
                         blinkStart = 0
                         current_time = time.time()
-                        if current_time - lastBlinkTime >= 1.1 and lastBlinkTime != 0:
+                        if current_time - lastBlinkTime >= 2.2 and lastBlinkTime != 0:
                             blinks.append("|")
                             if morse_sequence:
                                 letter = morse_to_english(morse_sequence)
@@ -122,11 +121,10 @@ def process_morse_video(video_path):
                             else:
                                 morse_word += " "
                         lastBlinkTime = current_time
-                        if 0.65 <= blinkDuration:
+                        if 0.9 <= blinkDuration:
                             morse_sequence += "-"
-                        elif blinkDuration < 0.65:
+                        elif blinkDuration < 0.9:
                             morse_sequence += "."
-                    counter = 0
 
             if morse_word:
                 last_displayed_word = morse_word
@@ -134,7 +132,7 @@ def process_morse_video(video_path):
             cv2.putText(frame, f"Morse: {morse_sequence}", (30, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2)
             cv2.putText(frame, f"Word: {last_displayed_word}", (30, 150), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
             display_frame = cv2.resize(frame, (960, 540))
-            #cv2.imshow('Morse Code Blink Detection', display_frame)
+            cv2.imshow('Morse Code Blink Detection', display_frame)
 
         if cv2.waitKey(25) & 0xFF == ord('q'):
             break
@@ -147,6 +145,7 @@ def process_morse_video(video_path):
     cap.release()
     cv2.destroyAllWindows()
     return morse_word
+
 if __name__ == "__main__":
     # Example usage:
-    print(process_morse_video("./morse_code_train_data/hello_morse_code.mp4"))
+    print(process_morse_video("./video_files/test1.mp4"))

@@ -36,7 +36,7 @@ def predict_audio_label(file_path):
     
     # Get the label with the highest probability
     #predicted_label = np.argmax(prediction)
-    predicted_label = MorseCode.from_wavfile('./audio_files/morse_code.wav').decode()
+    predicted_label = MorseCode.from_wavfile(file_path).decode()
     return predicted_label
 
 # Main function
