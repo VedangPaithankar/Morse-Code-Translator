@@ -18,9 +18,10 @@ checksum = abs(sum(1 if i == '.' else -1 for i in checksum_audio))
 checksum_verification = "Checksum Verified!!" if checksum_video == checksum else "Checksum Failed!!"
 
 # Step 10: Adding Both Audio and Video Together
-if video_decoded_word:
+if video_decoded_word and len(video_decoded_word) > 3:
     video_decoded_word = video_decoded_word[1:-1]
-
+else:
+    video_decoded_word = video_decoded_word[:-1]
 public_key_encrypted = ""
 min_len = min(len(video_decoded_word), len(audio_decoded_word))
 for i in range(min_len):

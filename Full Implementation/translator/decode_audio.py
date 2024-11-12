@@ -84,10 +84,10 @@ if __name__ == "__main__":
     model_path = "./audio_model/rnn_model.h5"
     
     # You can either hardcode the audio file path or use input()
-    audio_file_path = './audio_files/tampered_audio.wav'
+    audio_file_path = './audio_files/3.wav'
     
     # Make prediction
-    result = predict_audio(model_path, audio_file_path)
+    result = predict_audio(audio_file_path)
     
     # Optional: you can add more processing based on the prediction result
     if result:
