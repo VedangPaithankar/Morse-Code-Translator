@@ -1,3 +1,3 @@
 primitive_root=2
 prime_number=613
-private_key=236
+private_key=122

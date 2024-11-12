@@ -9,7 +9,7 @@ OUTPUT_PATH = './audio_files/'
 os.makedirs(OUTPUT_PATH, exist_ok=True)
 
 # Step 1: Read inputs from file with specific format
-input_file = os.path.join(FILES_PATH, 'test1.txt')
+input_file = os.path.join(FILES_PATH, 'test1-Bob.txt')
 with open(input_file, 'r') as f:
     lines = f.readlines()
     a = int(lines[0].strip().split('=')[1])        # Primitive root (a)
@@ -56,6 +56,6 @@ with open(output_file, 'w') as f:
     f.write(f"Video Morse Code (Odd positions + CheckSum): {video_morse}\n")
     f.write(f"Audio Morse Code (Even positions): {audio_morse}\n")
     f.write(f"Morse Code to be transmitted: {morse_string + ' ' + ttm(str(checksum))}\n")
-    f.write(f"Morse code audio saved to: morse_code.wav\n")
+    f.write(f"Morse code audio saved to: test1-Bob.wav\n")
 
 print(f"Output saved to {output_file}")

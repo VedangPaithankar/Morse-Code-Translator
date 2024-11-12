@@ -38,7 +38,7 @@ def generate_tone(duration):
 def generate_silence(duration):
     return np.zeros(int(SAMPLE_RATE * duration))
 
-def morse_to_audio(morse_code, filename="./audio_files/tampered_audio.wav"):
+def morse_to_audio(morse_code, filename="./audio_files/test1-Bob.wav"):
     audio_data = []
 
     for symbol in morse_code:

@@ -51,7 +51,7 @@ def string_to_morse(input_string: str) -> str:
     morse_code = [morse_code_dict[char] for char in input_string if char in morse_code_dict]
     return ' '.join(morse_code)
 
-def split_morse_code(morse_code: str) -> (str, str):
+def split_morse_code(morse_code: str):
     """Split Morse code into separate strings for odd and even positions."""
     morse_chars = morse_code.split()
     video_morse = ' '.join(morse_chars[i] for i in range(0, len(morse_chars), 2))  # Odd positions: 1st, 3rd, 5th, ...

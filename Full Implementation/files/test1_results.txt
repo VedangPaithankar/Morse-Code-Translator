@@ -1,5 +1,5 @@
-Decoded Word (Video): GH
-Decoded Word (Audio): F
+Decoded Word (Video): EH
+Decoded Word (Audio): H
 Checksum Verified!!
-Public Key of Alice: DCE
+Public Key of Alice: BEE
 Keys exchanged successfully!

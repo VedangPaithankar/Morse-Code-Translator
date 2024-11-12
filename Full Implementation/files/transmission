@@ -1,8 +1,8 @@
-Public Key: 435
-Encoded Public Key (letters): DCE
-Encrypted Public Key (Caesar Cipher): GFH
-Checksum: 2
-Video Morse Code (Odd positions + CheckSum): --. .... ..---
-Audio Morse Code (Even positions): ..-.
-Morse Code to be transmitted: --. ..-. .... ..---
-Morse code audio saved to: morse_code.wav
+Public Key: 155
+Encoded Public Key (letters): AEE
+Encrypted Public Key (Caesar Cipher): DHH
+Checksum: 4
+Video Morse Code (Odd positions + CheckSum): -.. .... ....-
+Audio Morse Code (Even positions): ....
+Morse Code to be transmitted: -.. .... .... ....-
+Morse code audio saved to: test1-Bob.wav
