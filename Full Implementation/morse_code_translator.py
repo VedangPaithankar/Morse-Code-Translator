@@ -1,5 +1,5 @@
 from translator.decode_video import process_morse_video
-from translator.decode_audio import predict_audio_label
+from translator.decode_audio import predict_audio
 from generators.generate_public_keys import caesar_decipher
 from generators.morse_code_audio_generator import ttm
 
@@ -7,7 +7,8 @@ from generators.morse_code_audio_generator import ttm
 video_decoded_word = process_morse_video('./video_files/test1.mp4')
 
 # Step 8: Decode them using morse code translator - Audio
-audio_decoded_word = predict_audio_label('./audio_files/tampered_audio.wav')
+audio_decoded_word = predict_audio('./audio_files/tampered_audio.wav')
+audio_decoded_word = audio_decoded_word['label']
 
 # Step 9: Verify the checksum
 checksum_video = int(video_decoded_word[-1])
@@ -38,3 +39,5 @@ with open('./files/test1_results.txt', 'w') as file:
     if checksum_verification == "Checksum Verified!!":
         file.write("Public Key of Alice: " + public_Key + "\n")
         file.write("Keys exchanged successfully!\n")
+
+print("Test results are in the file test1_results.txt")

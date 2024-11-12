@@ -1,3 +1,5 @@
 Decoded Word (Video): GH
-Decoded Word (Audio): 3
-Checksum Failed!!
+Decoded Word (Audio): F
+Checksum Verified!!
+Public Key of Alice: DCE
+Keys exchanged successfully!
